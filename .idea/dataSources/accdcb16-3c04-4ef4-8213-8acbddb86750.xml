@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="BooksDB@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+    <root id="1"/>
+    <database id="2" parent="1" name="BooksDB">
+      <ObjectId>16385</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-03-19.20:18:13.078</IntrospectionTimestamp>
+      <IntrospectionStateNumber>765</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="5" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="information_schema">
+      <ObjectId>12124</ObjectId>
+    </schema>
+    <table id="9" parent="3" name="author">
+      <ObjectId>17132</ObjectId>
+      <StateNumber>763</StateNumber>
+    </table>
+    <table id="10" parent="3" name="book">
+      <ObjectId>17158</ObjectId>
+      <StateNumber>765</StateNumber>
+    </table>
+    <table id="11" parent="3" name="buy_rel">
+      <ObjectId>17203</ObjectId>
+      <StateNumber>765</StateNumber>
+    </table>
+    <table id="12" parent="3" name="customer">
+      <ObjectId>17140</ObjectId>
+      <StateNumber>765</StateNumber>
+    </table>
+    <table id="13" parent="3" name="located_rel">
+      <ObjectId>17187</ObjectId>
+      <StateNumber>764</StateNumber>
+    </table>
+    <table id="14" parent="3" name="publisher">
+      <ObjectId>17124</ObjectId>
+      <StateNumber>762</StateNumber>
+    </table>
+    <table id="15" parent="3" name="warehouse">
+      <ObjectId>17150</ObjectId>
+      <StateNumber>764</StateNumber>
+    </table>
+    <table id="16" parent="3" name="written_rel">
+      <ObjectId>17171</ObjectId>
+      <StateNumber>763</StateNumber>
+    </table>
+    <column id="17" parent="9" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>759</StateNumber>
+    </column>
+    <column id="18" parent="9" name="country">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>759</StateNumber>
+    </column>
+    <column id="19" parent="9" name="birthday">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>759</StateNumber>
+    </column>
+    <index id="20" parent="9" name="author_pkey">
+      <ObjectId>17138</ObjectId>
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="21" parent="9" name="author_pkey">
+      <ObjectId>17139</ObjectId>
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>author_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="22" parent="10" name="isbn">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>762</StateNumber>
+    </column>
+    <column id="23" parent="10" name="title">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>762</StateNumber>
+    </column>
+    <column id="24" parent="10" name="year">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>762</StateNumber>
+    </column>
+    <column id="25" parent="10" name="publisher_name">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>762</StateNumber>
+    </column>
+    <index id="26" parent="10" name="book_pkey">
+      <ObjectId>17164</ObjectId>
+      <ColNames>isbn</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="27" parent="10" name="book_pkey">
+      <ObjectId>17165</ObjectId>
+      <ColNames>isbn</ColNames>
+      <UnderlyingIndexName>book_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="28" parent="10" name="book_publisher_name_fkey">
+      <ObjectId>17166</ObjectId>
+      <ColNames>publisher_name</ColNames>
+      <RefTableName>publisher</RefTableName>
+      <RefKeyName>publisher_pkey</RefKeyName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <column id="29" parent="11" name="customer_basket_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>765</StateNumber>
+    </column>
+    <column id="30" parent="11" name="book_isbn">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>765</StateNumber>
+    </column>
+    <column id="31" parent="11" name="price">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>765</StateNumber>
+    </column>
+    <foreign-key id="32" parent="11" name="buy_rel_customer_basket_id_fkey">
+      <ObjectId>17209</ObjectId>
+      <ColNames>customer_basket_id</ColNames>
+      <RefTableName>customer</RefTableName>
+      <RefKeyName>customer_basket_id_key</RefKeyName>
+      <RefColNames>basket_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="11" name="buy_rel_book_isbn_fkey">
+      <ObjectId>17214</ObjectId>
+      <ColNames>book_isbn</ColNames>
+      <RefTableName>book</RefTableName>
+      <RefKeyName>book_pkey</RefKeyName>
+      <RefColNames>isbn</RefColNames>
+    </foreign-key>
+    <column id="34" parent="12" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>760</StateNumber>
+    </column>
+    <column id="35" parent="12" name="email">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>760</StateNumber>
+    </column>
+    <column id="36" parent="12" name="address">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>760</StateNumber>
+    </column>
+    <column id="37" parent="12" name="phone">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>760</StateNumber>
+    </column>
+    <column id="38" parent="12" name="basket_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>760</StateNumber>
+    </column>
+    <index id="39" parent="12" name="customer_pkey">
+      <ObjectId>17146</ObjectId>
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="40" parent="12" name="customer_basket_id_key">
+      <ObjectId>17148</ObjectId>
+      <ColNames>basket_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="12" name="customer_pkey">
+      <ObjectId>17147</ObjectId>
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>customer_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="42" parent="12" name="customer_basket_id_key">
+      <ObjectId>17149</ObjectId>
+      <ColNames>basket_id</ColNames>
+      <UnderlyingIndexName>customer_basket_id_key</UnderlyingIndexName>
+    </key>
+    <column id="43" parent="13" name="warehouse_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>764</StateNumber>
+    </column>
+    <column id="44" parent="13" name="book_isbn">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>764</StateNumber>
+    </column>
+    <foreign-key id="45" parent="13" name="located_rel_warehouse_id_fkey">
+      <ObjectId>17193</ObjectId>
+      <ColNames>warehouse_id</ColNames>
+      <RefTableName>warehouse</RefTableName>
+      <RefKeyName>warehouse_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="46" parent="13" name="located_rel_book_isbn_fkey">
+      <ObjectId>17198</ObjectId>
+      <ColNames>book_isbn</ColNames>
+      <RefTableName>book</RefTableName>
+      <RefKeyName>book_pkey</RefKeyName>
+      <RefColNames>isbn</RefColNames>
+    </foreign-key>
+    <column id="47" parent="14" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>758</StateNumber>
+    </column>
+    <column id="48" parent="14" name="address">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>758</StateNumber>
+    </column>
+    <column id="49" parent="14" name="phone">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>758</StateNumber>
+    </column>
+    <index id="50" parent="14" name="publisher_pkey">
+      <ObjectId>17130</ObjectId>
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="14" name="publisher_pkey">
+      <ObjectId>17131</ObjectId>
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>publisher_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="52" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>761</StateNumber>
+    </column>
+    <column id="53" parent="15" name="address">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>761</StateNumber>
+    </column>
+    <column id="54" parent="15" name="phone">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>761</StateNumber>
+    </column>
+    <index id="55" parent="15" name="warehouse_pkey">
+      <ObjectId>17156</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="56" parent="15" name="warehouse_pkey">
+      <ObjectId>17157</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>warehouse_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="16" name="author_name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>763</StateNumber>
+    </column>
+    <column id="58" parent="16" name="book_isbn">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>763</StateNumber>
+    </column>
+    <foreign-key id="59" parent="16" name="written_rel_author_name_fkey">
+      <ObjectId>17177</ObjectId>
+      <ColNames>author_name</ColNames>
+      <RefTableName>author</RefTableName>
+      <RefKeyName>author_pkey</RefKeyName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <foreign-key id="60" parent="16" name="written_rel_book_isbn_fkey">
+      <ObjectId>17182</ObjectId>
+      <ColNames>book_isbn</ColNames>
+      <RefTableName>book</RefTableName>
+      <RefKeyName>book_pkey</RefKeyName>
+      <RefColNames>isbn</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dbmanager.controllers.ManagerController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="%menu.file">
+            <items>
+                  <MenuItem fx:id="selectTableItem" mnemonicParsing="false" text="%menu.select_table" />
+                  <Menu mnemonicParsing="false" text="%menu.mode">
+                     <items>
+                        <RadioMenuItem fx:id="tableModeItem" mnemonicParsing="false" text="%menu.table">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="mode1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="requestModeItem" mnemonicParsing="false" text="%menu.request" toggleGroup="$mode1" />
+                     </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="exitItem" mnemonicParsing="false" onAction="#close" text="%menu.exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="%menu.edit">
+            <items>
+              <MenuItem fx:id="addItem" mnemonicParsing="false" onAction="#addRow" text="%menu.add" />
+                  <MenuItem fx:id="modifyItem" mnemonicParsing="false" onAction="#modifyRow" text="%menu.modify" />
+                  <MenuItem fx:id="removeItem" mnemonicParsing="false" onAction="#removeRow" text="%menu.remove" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="%menu.view">
+              <items>
+                  <Menu mnemonicParsing="false" text="%menu.language">
+                    <items>
+                        <RadioMenuItem fx:id="enLanguageItem" mnemonicParsing="false" text="%menu.english">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="mode" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="ukLanguageItem" mnemonicParsing="false" text="%menu.ukrainian" toggleGroup="$mode" />
+                    </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <CheckMenuItem fx:id="toolbarCheckItem" mnemonicParsing="false" selected="true" text="%menu.toolbar" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" style="-fx-font-family: Arial;" text="%menu.help">
+            <items>
+              <MenuItem fx:id="aboutItem" mnemonicParsing="false" text="%menu.about" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane fx:id="toolbar">
+               <left>
+                  <HBox>
+                     <children>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addRow" text="%toolbar.add">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyRow" text="%toolbar.modify">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeRow" text="%toolbar.remove">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </left>
+               <right>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="%toolbar.table">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></Label>
+                        <ComboBox fx:id="tableSelect" />
+                     </children>
+                  </HBox>
+               </right>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </BorderPane>
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
