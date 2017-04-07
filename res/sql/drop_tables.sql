@@ -7,5 +7,6 @@ DROP TABLE buy_rel;
 DROP TABLE book;
 DROP TABLE publisher;
 DROP TABLE author;
+DROP TABLE country;
 DROP TABLE customer;
 DROP TABLE warehouse;

@@ -63,23 +63,11 @@ public class Database
         return tables;
     }
 
-//    public ArrayList<DatabaseColumn> getTableColumns(String tableName) {
-//        ArrayList<DatabaseColumn> columns = new ArrayList<>();
-//        try {
-//            ResultSetMetaData data = connection.createStatement().executeQuery("SELECT * FROM " + tableName).getMetaData();
-//            for (int i = 1; i <= data.getColumnCount(); ++i) {
-//                String colName = data.getColumnName(i), colTableName = data.getTableName(i);
-//                DatabaseColumn column = new DatabaseColumn(data.getColumnTypeName(i), colName, colTableName, findReference(colTableName, colName), isPrimaryKey(colTableName, colName));
-//                columns.add(column);
-//            }
-//        } catch (Exception ignored) {}
-//        return columns;
-//    }
-
     public DatabaseResult query(String sqlQuery) {
         ArrayList<DatabaseRow> rows = new ArrayList<>();
         ArrayList<DatabaseColumn> columns = new ArrayList<>();
         try {
+            System.out.println(sqlQuery);
             ResultSet resultSet = connection.createStatement().executeQuery(sqlQuery);
             ResultSetMetaData data = resultSet.getMetaData();
 
@@ -95,8 +83,24 @@ public class Database
                     row.addCell(new DatabaseCell(columns.get(i-1), resultSet.getString(data.getColumnName(i))));
                 rows.add(row);
             }
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            connect();
+            e.printStackTrace();
+        }
         return new DatabaseResult(columns, rows);
+    }
+
+    public boolean update(String sqlUpdate) {
+        try {
+            System.out.println(sqlUpdate);
+            connection.createStatement().executeUpdate(sqlUpdate);
+            connection.commit();
+            return true;
+        } catch (SQLException e) {
+            connect();
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public DatabaseReference findReference(String tableName, String columnName) {

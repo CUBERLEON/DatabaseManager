@@ -12,6 +12,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -23,25 +24,26 @@
           <Menu mnemonicParsing="false" text="%menu.file">
             <items>
                   <MenuItem fx:id="selectTableItem" mnemonicParsing="false" text="%menu.select_table" />
-                  <Menu mnemonicParsing="false" text="%menu.mode">
-                     <items>
-                        <RadioMenuItem fx:id="tableModeItem" mnemonicParsing="false" text="%menu.table">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="mode1" />
-                           </toggleGroup>
-                        </RadioMenuItem>
-                        <RadioMenuItem fx:id="requestModeItem" mnemonicParsing="false" text="%menu.request" toggleGroup="$mode1" />
-                     </items>
-                  </Menu>
+                  <MenuItem fx:id="requestItem" mnemonicParsing="false" text="%menu.query" />
+                  <MenuItem fx:id="chartItem" mnemonicParsing="false" text="%menu.chart" />
                   <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem fx:id="exitItem" mnemonicParsing="false" onAction="#close" text="%menu.exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="%menu.edit">
             <items>
-              <MenuItem fx:id="addItem" mnemonicParsing="false" onAction="#addRow" text="%menu.add" />
-                  <MenuItem fx:id="modifyItem" mnemonicParsing="false" onAction="#modifyRow" text="%menu.modify" />
-                  <MenuItem fx:id="removeItem" mnemonicParsing="false" onAction="#removeRow" text="%menu.remove" />
+              <MenuItem fx:id="addItem" mnemonicParsing="false" onAction="#addRow" text="%menu.add">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="modifyItem" mnemonicParsing="false" onAction="#modifyRow" text="%menu.modify">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="removeItem" mnemonicParsing="false" onAction="#removeRow" text="%menu.remove">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="%menu.view">

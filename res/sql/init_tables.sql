@@ -1,19 +1,26 @@
 /* Regular tables */
 
 CREATE TABLE publisher (
-    1 TEXT NOT NULL,
+    name TEXT NOT NULL,
     address TEXT NOT NULL,
     phone TEXT NOT NULL,
 
     PRIMARY KEY (name)
 );
 
-CREATE TABLE author (
+CREATE TABLE country (
     name TEXT NOT NULL,
-    country TEXT NOT NULL,
-    birthday DATE NOT NULL,
 
     PRIMARY KEY (name)
+);
+
+CREATE TABLE author (
+    name TEXT NOT NULL,
+    country_name TEXT NOT NULL,
+    birthday DATE NOT NULL,
+
+    PRIMARY KEY (name),
+    FOREIGN KEY (country_name) REFERENCES country (name)
 );
 
 CREATE TABLE customer (
@@ -67,6 +74,7 @@ CREATE TABLE buy_rel (
     customer_basket_id INTEGER NOT NULL,
     book_isbn TEXT NOT NULL,
     price INTEGER NOT NULL,
+    date DATE NOT NULL,
 
     FOREIGN KEY (customer_basket_id) REFERENCES customer (basket_id),
     FOREIGN KEY (book_isbn) REFERENCES book (isbn)

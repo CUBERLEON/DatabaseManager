@@ -35,4 +35,32 @@ public class DatabaseRow
     public ArrayList<DatabaseCell> getCells() {
         return cells;
     }
+
+    public String getAllNamesString() {
+        String res = "";
+        for (DatabaseCell cell : cells) res += (res.isEmpty() ? "" : ", ") + cell.getColumn().getName();
+        return res;
+    }
+
+    public String getAllValuesString() {
+        String res = "";
+        for (DatabaseCell cell : cells) res += (res.isEmpty() ? "" : ", ") + "'" + cell.getValue() + "'";
+        return res;
+    }
+
+    public String getPrimaryKeysString() {
+        String res = "";
+        for (DatabaseCell cell : cells)
+            if (cell.getColumn().isPrimary())
+                res += (res.isEmpty() ? "" : " AND ") + cell.getColumn().getName() + "='" + cell.getValue() + "'";
+        return res;
+    }
+
+    public String getRegularColumnsString() {
+        String res = "";
+        for (DatabaseCell cell : cells)
+            if (!cell.getColumn().isPrimary())
+                res += (res.isEmpty() ? "" : ", ") + cell.getColumn().getName() + "='" + cell.getValue() + "'";
+        return res;
+    }
 }

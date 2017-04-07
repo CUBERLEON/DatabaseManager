@@ -1,5 +1,11 @@
 package dbmanager.database;
 
+import dbmanager.Manager;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class DatabaseCell
 {
     private DatabaseColumn column;
@@ -26,8 +32,36 @@ public class DatabaseCell
     }
 
     public boolean isValid() {
-        errorMessage = "invalid data";
-        return true; //TODO implement isValid method
+        boolean valid = true;
+        errorMessage = "";
+
+        System.out.println(column.getType());
+
+        String type = column.getType();
+        if (value.isEmpty()) {
+            valid = false;
+            errorMessage = "empty_field";
+        } else if (type.equals("text")) {
+
+        } else if (type.contains("int")) {
+            if (!value.matches("\\d+")) {
+                valid = false;
+                errorMessage = "not_integer";
+            }
+        } else if (type.equals("date")) {
+            try {
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                df.setLenient(false);
+                df.parse(value);
+            } catch (ParseException e) {
+                valid = false;
+                errorMessage = "invalid_date";
+            }
+        }
+
+        errorMessage = column.getDisplayName() + ": " + Manager.getString("alert", errorMessage);
+
+        return valid;
     }
 
     public String getErrorMessage() {

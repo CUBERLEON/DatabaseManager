@@ -1,5 +1,7 @@
 package dbmanager.database;
 
+import dbmanager.Manager;
+
 public class DatabaseColumn
 {
     private String type;
@@ -25,6 +27,12 @@ public class DatabaseColumn
 
     public String getName() {
         return name;
+    }
+
+    public String getDisplayName() {
+        String pry = primary ? "$" : "";
+        String ref = reference == null ? "" : " @ " + Manager.getString("table", reference.getTableName());
+        return pry + Manager.getString("column", name) + ref;
     }
 
     public String getTableName() {
